@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Notes App</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>📝 Notes App</h1>
+
+        <form action="/add" method="post">
+            <input type="text" name="note" placeholder="Enter your note..." required>
+            <button type="submit">Add</button>
+        </form>
+
+        <ul>
+            {% for note in notes %}
+            <li
+                style="display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #eee;">
+
+                <!-- <span>#{{ note[0] }} -></span> for showing id number of the user  -->
+                <span>{{ note[1] }}</span>
+
+                <form action="/delete/{{ note[0] }}" method="post" style="margin:0;">
+                    <button style="background:red; color:white; border:none; padding: 5px 10px; cursor:pointer;">
+                        Delete
+                    </button>
+                </form>
+
+            </li>
+
+
+            {% endfor %}
+        </ul>
+
+    </div>
+
+
+</body>
+
+</html>
